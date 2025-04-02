@@ -6,8 +6,10 @@ i<!DOCTYPE html>
     <title>On est le 26 mars</title>
 </head>
 <body>
-    <h1>Bienvenue !</h1>
-    <p>C'est un entrainement!</p>
+    <h1>Bienvenue. Vous voulez optimiser vos dépenses? Vous êtes au bon endroit!</h1>
+    <p>Sur ce site nous vous proposons un classement des enseignes les moins chères pour vous permettre de faire des économies.</p>
     <a href="https://github.com/">Visitez GitHub</a>
 </body>
 </html>
+
+projet qui met un classement des supermarchés les moins chers
