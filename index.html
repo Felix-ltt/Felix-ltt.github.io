@@ -3,7 +3,7 @@ i<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivonsmoinscher.com</title>
+    <title>Classement des supermarchés les moins chers</title>
 </head>
 <body>
     <h1>Bienvenue. Vous voulez optimiser vos dépenses? Vous êtes au bon endroit!</h1>
@@ -11,3 +11,49 @@ i<!DOCTYPE html>
     <a href="https://github.com/">Visitez GitHub</a>
 </body>
 </html>
+ <main>
+        <div id="ranking"></div>
+    </main>
+
+    <footer>
+        <p>© 2025 Classement des Supermarchés</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; }
+
+header { text-align: center; background-color: #4CAF50; padding: 20px; color: white; }
+
+h1 { font-size: 2rem; }
+
+main { display: flex; justify-content: center; padding: 20px; }
+
+#ranking { display: flex; flex-wrap: wrap; justify-content: space-around; }
+
+.supermarket { background-color: white; border: 1px solid #ddd; margin: 10px; padding: 20px; text-align: center; width: 250px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+
+.supermarket img { width: 100%; height: auto; border-radius: 8px; }
+
+footer { text-align: center; padding: 10px; background-color: #333; color: white; }
+document.addEventListener('DOMContentLoaded', () => {
+    const supermarkets = [
+        { name: "Carrefour", price: 100, image: "images/carrefour.jpg" },
+        { name: "Leclerc", price: 95, image: "images/leclerc.jpg" },
+        { name: "Intermarché", price: 97, image: "images/intermarché.jpg" }
+    ];
+
+    supermarkets.sort((a, b) => a.price - b.price);
+
+    const rankingContainer = document.getElementById('ranking');
+    rankingContainer.innerHTML = supermarkets.map(supermarket => `
+        <div class="supermarket">
+            <img src="${supermarket.image}" alt="${supermarket.name}">
+            <h2>${supermarket.name}</h2>
+            <p>Prix moyen: ${supermarket.price}€</p>
+        </div>
+    `).join('');
+});
