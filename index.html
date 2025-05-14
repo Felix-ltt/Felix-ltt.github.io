@@ -95,10 +95,7 @@
 
         function displaySupermarkets(sortedSupermarkets) {
             const rankingDiv = document.getElementById('ranking');
-            rankingDiv.innerHTML = ''; // Clear the ranking before
-        function displaySupermarkets(sortedSupermarkets) {
-            const rankingDiv = document.getElementById('ranking');
-            rankingDiv.innerHTML = ''; // Vide le classement avant de le mettre à jour
+            rankingDiv.innerHTML = ''; // Vide le classement avant mise à jour
 
             sortedSupermarkets.forEach(supermarche => {
                 const div = document.createElement('div');
