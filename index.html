@@ -29,6 +29,7 @@
             text-align: center;
             width: 200px;
             transition: transform 0.3s;
+            position: relative;
         }
         .supermarket img {
             width: 100px;
@@ -37,11 +38,21 @@
             margin-bottom: 10px;
         }
         .supermarket h3 {
-            margin: 10px 0;
+            margin: 10px 0 5px;
         }
         .supermarket p {
-            font-size: 1.2em;
+            font-size: 1.1em;
             color: #555;
+        }
+        .ranking-position {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            border-radius: 20px;
         }
         .supermarket:hover {
             transform: scale(1.05);
@@ -76,32 +87,24 @@
 
     <script>
         const supermarkets = [
-            {
-                name: 'Carrefour',
-                avgPrice: 3.25,
-                img: 'images/carrefour.jpg'
-            },
-            {
-                name: 'Leclerc',
-                avgPrice: 3.10,
-                img: 'images/leclerc.jpg'
-            },
-            {
-                name: 'Auchan',
-                avgPrice: 3.35,
-                img: 'images/auchan.jpg'
-            }
+            { name: 'Carrefour', avgPrice: 3.25, img: 'images/carrefour.jpg' },
+            { name: 'Leclerc', avgPrice: 3.10, img: 'images/leclerc.jpg' },
+            { name: 'Auchan', avgPrice: 3.35, img: 'images/auchan.jpg' },
+            { name: 'Intermarché', avgPrice: 3.30, img: 'images/intermarche.jpg' },
+            { name: 'Lidl', avgPrice: 2.90, img: 'images/lidl.jpg' },
+            { name: 'Monoprix', avgPrice: 3.80, img: 'images/monoprix.jpg' }
         ];
 
         function displaySupermarkets(sortedSupermarkets) {
             const rankingDiv = document.getElementById('ranking');
-            rankingDiv.innerHTML = ''; // Vide le classement avant mise à jour
+            rankingDiv.innerHTML = ''; // Vide le classement
 
-            sortedSupermarkets.forEach(supermarche => {
+            sortedSupermarkets.forEach((supermarche, index) => {
                 const div = document.createElement('div');
                 div.className = 'supermarket';
 
                 div.innerHTML = `
+                    <div class="ranking-position">${index + 1}ᵉ</div>
                     <img src="${supermarche.img}" alt="${supermarche.name}">
                     <h3>${supermarche.name}</h3>
                     <p>${supermarche.avgPrice.toFixed(2)} €</p>
@@ -116,8 +119,8 @@
             displaySupermarkets(sorted);
         }
 
-        // Affichage initial au chargement de la page
-        displaySupermarkets(supermarkets);
+        // Tri et affichage initial au chargement
+        sortSupermarkets();
     </script>
 </body>
 </html>
