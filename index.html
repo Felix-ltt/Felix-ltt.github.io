@@ -96,4 +96,32 @@
         function displaySupermarkets(sortedSupermarkets) {
             const rankingDiv = document.getElementById('ranking');
             rankingDiv.innerHTML = ''; // Clear the ranking before
+        function displaySupermarkets(sortedSupermarkets) {
+            const rankingDiv = document.getElementById('ranking');
+            rankingDiv.innerHTML = ''; // Vide le classement avant de le mettre à jour
+
+            sortedSupermarkets.forEach(supermarche => {
+                const div = document.createElement('div');
+                div.className = 'supermarket';
+
+                div.innerHTML = `
+                    <img src="${supermarche.img}" alt="${supermarche.name}">
+                    <h3>${supermarche.name}</h3>
+                    <p>${supermarche.avgPrice.toFixed(2)} €</p>
+                `;
+
+                rankingDiv.appendChild(div);
+            });
+        }
+
+        function sortSupermarkets() {
+            const sorted = [...supermarkets].sort((a, b) => a.avgPrice - b.avgPrice);
+            displaySupermarkets(sorted);
+        }
+
+        // Affichage initial au chargement de la page
+        displaySupermarkets(supermarkets);
+    </script>
+</body>
+</html>
 
