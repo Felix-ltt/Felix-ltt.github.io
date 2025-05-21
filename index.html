@@ -3,125 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classement des Supermarchés</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .ranking {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .supermarket {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 20px;
-            text-align: center;
-            width: 200px;
-            transition: transform 0.3s;
-            position: relative;
-        }
-        .supermarket img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-        .supermarket h3 {
-            margin: 10px 0 5px;
-        }
-        .supermarket p {
-            font-size: 1.1em;
-            color: #555;
-        }
-        .ranking-position {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            font-size: 0.9em;
-            border-radius: 20px;
-        }
-        .supermarket:hover {
-            transform: scale(1.05);
-        }
-        .button-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            margin: 5px;
-            border-radius: 5px;
-        }
-        .button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Classement des Supermarchés les Moins Chers en France</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Classement des Supermarchés en Françe par Prix Moyen</h1>
+    <header>
+        <h1>Classement des Supermarchés les Moins Chers en France</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Classement Général (Avril 2025)</h2>
+            <ol>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
 
-    <div class="button-container">
-        <button class="button" onclick="sortSupermarkets()">Trier par Prix Moyen</button>
-    </div>
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
 
-    <div class="ranking" id="ranking"></div>
+nav ul {
+    list-style: none;
+    padding: 0;
+}
 
-    <script>
-        const supermarkets = [
-            { name: 'Carrefour', avgPrice: 3.25, img: 'images/carrefour.jpg' },
-            { name: 'Leclerc', avgPrice: 3.10, img: 'images/leclerc.jpg' },
-            { name: 'Auchan', avgPrice: 3.35, img: 'images/auchan.jpg' },
-            { name: 'Intermarché', avgPrice: 3.30, img: 'images/intermarche.jpg' },
-            { name: 'Lidl', avgPrice: 2.90, img: 'images/lidl.jpg' },
-            { name: 'Monoprix', avgPrice: 3.80, img: 'images/monoprix.jpg' }
-        ];
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
 
-        function displaySupermarkets(sortedSupermarkets) {
-            const rankingDiv = document.getElementById('ranking');
-            rankingDiv.innerHTML = ''; // Vide le classement
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-            sortedSupermarkets.forEach((supermarche, index) => {
-                const div = document.createElement('div');
-                div.className = 'supermarket';
+main {
+    padding: 20px;
+    text-align: center;
+}
 
-                div.innerHTML = `
-                    <div class="ranking-position">${index + 1}ᵉ</div>
-                    <img src="${supermarche.img}" alt="${supermarche.name}">
-                    <h3>${supermarche.name}</h3>
-                    <p>${supermarche.avgPrice.toFixed(2)} €</p>
-                `;
-
-                rankingDiv.appendChild(div);
-            });
-        }
-
-        function sortSupermarkets() {
-            const sorted = [...supermarkets].sort((a, b) => a.avgPrice - b.avgPrice);
-            displaySupermarkets(sorted);
-        }
-
-        // Tri et affichage initial au chargement
-        sortSupermarkets();
-    </script>
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leclerc - Supermarché le Moins Cher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Leclerc - Supermarché le Moins Cher</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Classement des Supermarchés en Avril 2025</h2>
+            <p>Selon les données de <a href="https://www.quechoisir.org/breve-palmares-des-supermarches-les-enseignes-les-moins-cheres-n132194/">UFC-Que Choisir</a>, Leclerc est l'enseigne la moins chère en France, avec des prix 5,5% inférieurs à la moyenne des autres enseignes.</p>
+            <img src="leclerc.jpg" alt="Magasin Leclerc">
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Intermarché - Supermarché</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Intermarché</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Intermarché, proche des consommateurs</h2>
+        <img src="intermarche.jpg" alt="Magasin Intermarché" width="300">
+        <p>Intermarché mise sur une politique de prix attractifs tout en mettant en avant des produits français. C’est une enseigne très populaire dans les zones rurales et semi-urbaines.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Carrefour - Supermarché</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Carrefour</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Carrefour, l’un des leaders français</h2>
+        <img src="carrefour.jpg" alt="Magasin Carrefour" width="300">
+        <p>Carrefour est une des plus grandes enseignes de France. Il propose une grande variété de produits, et bien qu’un peu plus cher que Leclerc ou Intermarché, il est apprécié pour ses marques propres et ses formats variés.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Auchan - Supermarché</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Auchan</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Auchan, la diversité à prix correct</h2>
+        <img src="auchan.jpg" alt="Magasin Auchan" width="300">
+        <p>Auchan est réputé pour ses hypermarchés spacieux et son large choix de produits. Son rapport qualité-prix est bon, même s’il est légèrement au-dessus de la moyenne en termes de prix.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Lidl - Supermarché</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lidl</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Lidl, le discount intelligent</h2>
+        <img src="lidl.jpg" alt="Magasin Lidl" width="300">
+        <p>Lidl est une enseigne allemande qui a gagné en popularité grâce à ses prix très bas et à l’amélioration constante de la qualité de ses produits. Idéal pour les petits budgets.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Monoprix - Supermarché</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Monoprix</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="leclerc.html">Leclerc</a></li>
+                <li><a href="intermarche.html">Intermarché</a></li>
+                <li><a href="carrefour.html">Carrefour</a></li>
+                <li><a href="auchansupermarche.html">Auchan</a></li>
+                <li><a href="lidl.html">Lidl</a></li>
+                <li><a href="monoprix.html">Monoprix</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Monoprix, qualité urbaine</h2>
+        <img src="monoprix.jpg" alt="Magasin Monoprix" width="300">
+        <p>Monoprix est présent surtout en ville et propose des produits de qualité, souvent bio et éthiques. Toutefois, ses prix sont parmi les plus élevés du marché français.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Classement Supermarchés</p>
+    </footer>
 </body>
 </html>
 
